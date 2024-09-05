@@ -10,7 +10,7 @@ const blogButton = document.getElementById('BlogButton');
 const blogContent = document.getElementById('blogContent');
 blogButton.addEventListener('click', () => {
     blogContent.style.display = 'block';
-    window.location.href = 'Blog/blog.HTML';
+    window.location.href = 'Blog/blog.html';
 });
 
 
@@ -18,5 +18,5 @@ const myButton = document.getElementById('MyButton');
 const myContent = document.getElementById('myContent');
 myButton.addEventListener('click', () => {
     myContent.style.display = 'block';
-    window.location.href = 'HomePage.HTML';
+    window.location.href = 'index.html';
 });
