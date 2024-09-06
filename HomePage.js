@@ -1,22 +1,29 @@
+const homeButton = document.getElementById('MyButton');
 const projectButton = document.getElementById('ProjectButton');
-const projectContent = document.getElementById('projectContent');
-projectButton.addEventListener('click', () => {
-    projectContent.style.display = 'block';
-    window.location.href = 'Projects/project.html';
-});
-
-
 const blogButton = document.getElementById('BlogButton');
-const blogContent = document.getElementById('blogContent');
-blogButton.addEventListener('click', () => {
-    blogContent.style.display = 'block';
-    window.location.href = 'Blog/blog.html';
+const dynamicSection = document.getElementById('dynamicSection');
+const initialHomeContent = dynamicSection.innerHTML;
+
+function loadContent(page) {
+    fetch(page)
+    .then(response => response.text())
+    .then(data => {
+        dynamicSection.innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error loading page:', error);
+        dynamicSection.innerHTML = '<h2>Sorry, content could not be loaded.</h2>';
+    });
+}
+
+homeButton.addEventListener('click', () => {
+    dynamicSection.innerHTML = initialHomeContent;
 });
 
+projectButton.addEventListener('click', () => {
+    loadContent('Projects/project.html');
+});
 
-const myButton = document.getElementById('MyButton');
-const myContent = document.getElementById('myContent');
-myButton.addEventListener('click', () => {
-    myContent.style.display = 'block';
-    window.location.href = 'index.html';
+blogButton.addEventListener('click', () => {
+    loadContent('Blog/blog.html');
 });
